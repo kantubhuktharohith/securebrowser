@@ -69,7 +69,8 @@ app.use((req, res, next) => {
   }
 
   const basePort = parseInt(process.env.PORT || "5000", 10);
-  const host = process.env.HOST || "127.0.0.1";
+  const defaultHost = process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1";
+  const host = process.env.HOST || defaultHost;
 
   function startServer(port: number) {
     const srv = server.listen(port, host, () => {
