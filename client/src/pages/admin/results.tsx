@@ -8,6 +8,7 @@ import { Link } from "wouter";
 import { generateExamReport } from "@/lib/exam-utils";
 import type { ExamSession, Question } from "@shared/schema";
 import jsPDF from "jspdf";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 export default function Results() {
   const { user } = useAuth();
@@ -198,34 +199,22 @@ export default function Results() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 p-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Exam Results</h1>
-            <p className="text-gray-600 dark:text-gray-300 mt-2">View and analyze student exam performance</p>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+      <AdminNavbar />
+      <div className="p-4 max-w-7xl mx-auto">
+        {/* Export Buttons */}
+        {completedSessions.length > 0 && (
+          <div className="flex gap-2 mb-6">
+            <Button onClick={exportResultsPDF} className="bg-red-600 hover:bg-red-700" data-testid="button-export-pdf">
+              <FileText className="w-4 h-4 mr-2" />
+              Export PDF
+            </Button>
+            <Button onClick={exportResults} variant="outline" data-testid="button-export-csv">
+              <Download className="w-4 h-4 mr-2" />
+              Export CSV
+            </Button>
           </div>
-          <div className="flex gap-2">
-            <Link href="/admin/dashboard">
-              <Button variant="outline" data-testid="button-dashboard">
-                Dashboard
-              </Button>
-            </Link>
-            {completedSessions.length > 0 && (
-              <>
-                <Button onClick={exportResultsPDF} className="bg-red-600 hover:bg-red-700" data-testid="button-export-pdf">
-                  <FileText className="w-4 h-4 mr-2" />
-                  Export PDF
-                </Button>
-                <Button onClick={exportResults} variant="outline" data-testid="button-export-csv">
-                  <Download className="w-4 h-4 mr-2" />
-                  Export CSV
-                </Button>
-              </>
-            )}
-          </div>
-        </div>
+        )}
 
         {/* Summary Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

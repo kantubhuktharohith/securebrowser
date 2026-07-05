@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Link } from "wouter";
 import { useWebSocket } from "@/hooks/useWebSocket";
 import WebcamMonitor from "@/components/webcam-monitor";
+import { AdminNavbar } from "@/components/admin-navbar";
 import type { ExamSession } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 
@@ -269,29 +270,7 @@ export default function MonitoringSystem() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Monitoring Header */}
-      <div className="glass-header px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <i className="fas fa-tv text-primary text-2xl"></i>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Live Monitoring System</h1>
-              <p className="text-sm text-muted-foreground">Real-time surveillance and AI analysis</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 bg-green-100 px-3 py-1 rounded-full">
-              <div className="status-indicator status-online pulse-green"></div>
-              <span className="text-sm text-green-700">All Systems Active</span>
-            </div>
-            <Link href="/admin/dashboard">
-              <Button variant="outline" data-testid="button-dashboard">
-                <i className="fas fa-tachometer-alt mr-2"></i>Dashboard
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <AdminNavbar />
 
       <div className="p-6">
         {/* Monitoring Controls */}

@@ -95,6 +95,43 @@ export default function AdminLogin() {
                 disabled={isLoading}
               />
             </div>
+
+            {/* Demo Credentials Box */}
+            <div className="rounded-lg border border-indigo-200 bg-indigo-50/60 dark:border-indigo-800 dark:bg-indigo-950/30 p-3">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-1.5">
+                  <i className="fas fa-info-circle text-indigo-500 text-xs"></i>
+                  <span className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                    Demo Credentials
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail("admin@example.com");
+                    setPassword("admin123");
+                  }}
+                  className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200 underline underline-offset-2 transition-colors"
+                  data-testid="button-use-demo"
+                >
+                  Use Demo Credentials
+                </button>
+              </div>
+              <div className="space-y-1 font-mono text-xs text-slate-600 dark:text-slate-400">
+                <div className="flex items-center gap-2">
+                  <span className="text-slate-400 w-16 flex-shrink-0">Email:</span>
+                  <span className="bg-white dark:bg-slate-800 rounded px-2 py-0.5 border border-slate-200 dark:border-slate-700 select-all">
+                    admin@example.com
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-slate-400 w-16 flex-shrink-0">Password:</span>
+                  <span className="bg-white dark:bg-slate-800 rounded px-2 py-0.5 border border-slate-200 dark:border-slate-700 select-all">
+                    admin123
+                  </span>
+                </div>
+              </div>
+            </div>
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full" disabled={isLoading}>

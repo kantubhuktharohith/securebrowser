@@ -7,6 +7,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, 
   PieChart, Pie, Cell, AreaChart, Area, LineChart, Line
 } from "recharts";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 interface ExamSession {
   id: string;
@@ -152,19 +153,8 @@ export default function AdminAnalytics() {
 
   return (
     <div className="min-h-screen bg-gradient-primary">
+      <AdminNavbar />
       <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-white">Analytics Dashboard</h1>
-            <p className="text-white/80">Real-time performance trends and cheating detection metrics</p>
-          </div>
-          <Link href="/admin/dashboard">
-            <Button variant="outline" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-              <i className="fas fa-chevron-left mr-2"></i>Admin Dashboard
-            </Button>
-          </Link>
-        </div>
 
         {/* Aggregated Counters */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">

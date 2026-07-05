@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
 import type { Question } from "@shared/schema";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 export default function QuestionManagement() {
   const { user } = useAuth();
@@ -328,21 +329,8 @@ export default function QuestionManagement() {
 
   return (
     <div className="min-h-screen bg-gradient-primary">
+      <AdminNavbar />
       <div className="container mx-auto py-8 px-4">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-white">Question Management</h1>
-            <p className="text-white/80">Create and manage exam questions</p>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link href="/admin/dashboard">
-              <Button variant="secondary" data-testid="button-back-dashboard">
-                <i className="fas fa-arrow-left mr-2"></i>Dashboard
-              </Button>
-            </Link>
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Question Form */}

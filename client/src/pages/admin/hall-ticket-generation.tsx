@@ -11,6 +11,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { Link, useLocation } from "wouter";
 import type { HallTicket } from "@shared/schema";
 import jsPDF from "jspdf";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 export default function HallTicketGeneration() {
   const { user } = useAuth();
@@ -426,43 +427,7 @@ export default function HallTicketGeneration() {
 
   return (
     <div className="min-h-screen bg-gradient-primary">
-      {/* Header */}
-      <div className="glass-header px-6 py-4">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <i className="fas fa-graduation-cap text-white text-2xl"></i>
-            <h1 className="text-2xl font-bold text-white">SecureExam - Admin Portal</h1>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="text-white text-sm">
-              <span className="opacity-75">Admin:</span> {user?.firstName || user?.email}
-            </div>
-            <Button
-              variant="secondary"
-              onClick={async () => {
-                await fetch("/api/auth/logout", { method: "POST" });
-                window.location.href = "/";
-              }}
-              data-testid="button-logout"
-            >
-              <i className="fas fa-sign-out-alt mr-2"></i>Logout
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Back Button */}
-      <div className="fixed top-20 left-4 z-10">
-        <Button 
-          variant="outline" 
-          onClick={() => setLocation("/admin/dashboard")} 
-          className="bg-white/10 border-white/20 text-white hover:bg-white/20"
-          data-testid="button-back"
-        >
-          <i className="fas fa-arrow-left mr-2"></i>
-          Back
-        </Button>
-      </div>
+      <AdminNavbar />
       
       <div className="max-w-6xl mx-auto p-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

@@ -2,6 +2,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 export default function Home() {
   const { user, isLoading } = useAuth();
@@ -22,30 +23,34 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="glass-header px-6 py-4">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <i className="fas fa-graduation-cap text-primary text-2xl"></i>
-            <h1 className="text-2xl font-bold text-foreground">SecureExam</h1>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="text-sm text-muted-foreground">
-              Welcome, {user?.firstName || user?.email}
+      {isAdmin ? (
+        <AdminNavbar />
+      ) : (
+        <div className="glass-header px-6 py-4">
+          <div className="max-w-6xl mx-auto flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <i className="fas fa-graduation-cap text-primary text-2xl"></i>
+              <h1 className="text-2xl font-bold text-foreground">SecureExam</h1>
             </div>
-            <Button
-              variant="outline"
-              onClick={async () => {
-                await fetch("/api/auth/logout", { method: "POST" });
-                window.location.href = "/";
-              }}
-              data-testid="button-logout"
-            >
-              <i className="fas fa-sign-out-alt mr-2"></i>
-              Logout
-            </Button>
+            <div className="flex items-center space-x-4">
+              <div className="text-sm text-muted-foreground">
+                Welcome, {user?.firstName || user?.email}
+              </div>
+              <Button
+                variant="outline"
+                onClick={async () => {
+                  await fetch("/api/auth/logout", { method: "POST" });
+                  window.location.href = "/";
+                }}
+                data-testid="button-logout"
+              >
+                <i className="fas fa-sign-out-alt mr-2"></i>
+                Logout
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="max-w-6xl mx-auto p-6">
         <div className="mb-8">

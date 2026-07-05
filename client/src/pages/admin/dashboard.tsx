@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import { useWebSocket } from "@/hooks/useWebSocket";
 import { useEffect, useState } from "react";
 import type { SecurityIncident, ExamSession } from "@shared/schema";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 interface ExamStats {
   activeStudents: number;
@@ -207,46 +208,7 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-background page-enter">
       {/* Admin Header */}
-      <div className="glass-header px-6 py-4 sticky top-0 z-50">
-        <div className="flex items-center justify-between max-w-[1400px] mx-auto">
-          <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center">
-              <i className="fas fa-graduation-cap text-white text-sm"></i>
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-foreground" style={{ fontFamily: 'var(--font-heading)' }}>Admin Dashboard</h1>
-              <p className="text-xs text-muted-foreground">Real-time monitoring & control</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="hidden sm:flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg px-3 py-1.5">
-              <div className="status-indicator status-online"></div>
-              <span className="text-xs font-medium text-emerald-700 dark:text-emerald-400">System Online</span>
-            </div>
-            <Link href="/">
-              <Button variant="outline" className="border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900/50 rounded-lg text-sm" data-testid="button-home">
-                <i className="fas fa-home mr-2 text-xs"></i>Home Portal
-              </Button>
-            </Link>
-            <Link href="/admin/monitoring">
-              <Button className="bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-500/20 hover:shadow-lg rounded-lg text-sm btn-shine" data-testid="button-monitoring">
-                <i className="fas fa-tv mr-2 text-xs"></i>Live Monitoring
-              </Button>
-            </Link>
-            <Button
-              variant="ghost"
-              className="text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-lg text-sm"
-              onClick={async () => {
-                await fetch("/api/auth/logout", { method: "POST" });
-                window.location.href = "/";
-              }}
-              data-testid="button-logout"
-            >
-              <i className="fas fa-sign-out-alt mr-2 text-xs"></i>Logout
-            </Button>
-          </div>
-        </div>
-      </div>
+      <AdminNavbar />
 
       <div className="p-6 max-w-[1400px] mx-auto">
         {/* Stats Overview */}

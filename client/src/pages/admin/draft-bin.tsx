@@ -11,6 +11,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
 import { Archive, RotateCcw, Trash2, Eye, Calendar, Clock, User } from "lucide-react";
 import type { HallTicket } from "@shared/schema";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 export default function DraftBin() {
   const { user } = useAuth();
@@ -120,33 +121,9 @@ export default function DraftBin() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 p-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <Archive className="h-8 w-8 text-purple-600" />
-              Draft Bin
-            </h1>
-            <p className="text-gray-600 dark:text-gray-300 mt-2">
-              Manage submitted and inactive hall tickets
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <Link href="/admin/hall-ticket-generation">
-              <Button variant="outline" data-testid="button-hall-tickets">
-                <Archive className="w-4 h-4 mr-2" />
-                Hall Tickets
-              </Button>
-            </Link>
-            <Link href="/admin/dashboard">
-              <Button variant="outline" data-testid="button-dashboard">
-                Dashboard
-              </Button>
-            </Link>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+      <AdminNavbar />
+      <div className="p-4 max-w-7xl mx-auto">
 
         {/* Summary Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

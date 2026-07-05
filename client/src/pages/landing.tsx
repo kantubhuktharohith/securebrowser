@@ -70,7 +70,20 @@ export default function Landing() {
                 className="bg-indigo-600 hover:bg-indigo-700 text-white"
                 data-testid="button-student-login"
               >
+                <i className="fas fa-user-graduate mr-2"></i>
                 Student Login
+              </Button>
+            </li>
+
+            <li>
+              <Button
+                onClick={() => (window.location.href = "/admin/login")}
+                variant="outline"
+                className="border-slate-400 text-slate-700 hover:bg-slate-50 hover:border-slate-600"
+                data-testid="button-admin-login"
+              >
+                <i className="fas fa-user-shield mr-2"></i>
+                Admin Login
               </Button>
             </li>
           </ul>
@@ -117,8 +130,19 @@ export default function Landing() {
                 <Button
                   onClick={() => (window.location.href = "/student/start")}
                   className="bg-indigo-600 hover:bg-indigo-700 text-white flex-1"
+                  data-testid="mobile-button-student-login"
                 >
+                  <i className="fas fa-user-graduate mr-2"></i>
                   Student Login
+                </Button>
+                <Button
+                  onClick={() => (window.location.href = "/admin/login")}
+                  variant="outline"
+                  className="border-slate-400 text-slate-700 hover:bg-slate-50 flex-1"
+                  data-testid="mobile-button-admin-login"
+                >
+                  <i className="fas fa-user-shield mr-2"></i>
+                  Admin Login
                 </Button>
               </div>
             </div>

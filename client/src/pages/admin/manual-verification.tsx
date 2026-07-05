@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
 import { CheckCircle, XCircle, Eye, Clock } from "lucide-react";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 interface ExamSession {
   id: string;
@@ -136,25 +137,9 @@ export default function ManualVerification() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 p-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Eye className="text-primary text-3xl" />
-              <div>
-                <h1 className="text-3xl font-bold text-foreground">Manual Verification Review</h1>
-                <p className="text-muted-foreground">Review and approve student identity verifications</p>
-              </div>
-            </div>
-            <Link href="/admin/dashboard">
-              <Button variant="outline" data-testid="button-back-dashboard">
-                Back to Dashboard
-              </Button>
-            </Link>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+      <AdminNavbar />
+      <div className="p-4 max-w-7xl mx-auto">
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">

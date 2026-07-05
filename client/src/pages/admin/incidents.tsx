@@ -9,6 +9,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
 import { useWebSocket } from "@/hooks/useWebSocket";
 import type { SecurityIncident } from "@shared/schema";
+import { AdminNavbar } from "@/components/admin-navbar";
 
 interface IncidentStats {
   critical: number;
@@ -186,26 +187,7 @@ export default function IncidentManagement() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Incident Header */}
-      <div className="glass-header px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <i className="fas fa-shield-alt text-red-500 text-2xl"></i>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Incident Management System</h1>
-              <p className="text-sm text-muted-foreground">Security alerts, snapshots, and audit trail</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
-              <i className="fas fa-exclamation-triangle mr-1"></i>{stats.critical + stats.high + stats.medium + stats.low} Active Alerts
-            </div>
-            <Button variant="destructive" data-testid="button-alert-proctors">
-              <i className="fas fa-bell mr-2"></i>Alert All Proctors
-            </Button>
-          </div>
-        </div>
-      </div>
+      <AdminNavbar />
 
       <div className="p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
